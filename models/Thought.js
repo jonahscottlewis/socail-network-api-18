@@ -1,5 +1,33 @@
 const { Schema, model } = require('mongoose');
 
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      //* Set default value to the current timestamp
+      default: Date.now,
+    },
+  },
+    {
+      toJSON: {
+        getters: true,
+      },
+      id: false,
+    }
+);
+
 const thoughtSchema = new Schema(
     {
        thoughtText: {
@@ -18,34 +46,6 @@ const thoughtSchema = new Schema(
        },
        reactions: [reactionSchema], 
     },
-    {
-      toJSON: {
-        getters: true,
-      },
-      id: false,
-    }
-);
-
-const reactionSchema = new Schema(
-  {
-    reactionId: {
-      
-    },
-    reactionBody: {
-      type: String,
-      required: true,
-      maxlength: 280,
-    },
-    username: {
-      type: String,
-      required: pageYOffset,
-    },
-    createdAt: {
-      type: Date,
-      //* Set default value to the current timestamp
-      default: Date.now,
-    },
-  },
     {
       toJSON: {
         getters: true,
