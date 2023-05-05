@@ -5,16 +5,17 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-      "start": "node index",
-      "dev": "nodemon index",
-      "seed": "node utils/seed",
-      "heroku-postbuild": "node utils/seed.js"
+        "start": "node index",
+        "dev": "nodemon index",
+        "seed": "node utils/seed",
+        "heroku-postbuild": "node utils/seed.js"
     },
     "dependencies": {
-      "express": "^4.17.1",
-      "mongoose": "^7.0.2"
+        "express": "^4.17.1",
+        "moment": "^2.29.4",
+        "mongoose": "^7.0.2"
     },
     "devDependencies": {
-      "nodemon": "^2.0.9"
+        "nodemon": "^2.0.9"
     }
-  }
+}

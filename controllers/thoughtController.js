@@ -37,7 +37,7 @@ module.exports = {
     Thought.create(req.body)
       .then(({ _id }) => {
         return User.findOneAndUpdate(
-          { username: req.body.username },
+          { _id: req.body.Id },
           { $push: { thoughts: _id } },
           { new: true }
         );
@@ -47,7 +47,9 @@ module.exports = {
   },
     async updateThought(req, res) {
         try{
-        const ThoughtUpdate = await Thought.findByIdAndUpdate({ _id: req.params.thoughtId });
+        const ThoughtUpdate = await Thought.findByIdAndUpdate(req.params.thoughtId,
+          { $set: req.body },
+          { runValidators: true, new: true } );
 
         if(!ThoughtUpdate) {
             return res.status(404).json({ message: 'No thought with that ID' })
