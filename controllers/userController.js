@@ -43,6 +43,21 @@ module.exports = {
             res.status(500).json(err);
           }
         },
+        // update user by id
+        // Update a user
+       updateUser(req, res) {
+          User.findByIdAndUpdate(
+            req.params.userId,
+            { $set: req.body },
+            { runValidators: true, new: true }
+          )
+            .then((user) =>
+              !user
+                ? res.status(404).json({ message: "No user with this id!" })
+                : res.json(user)
+            )
+            .catch((err) => res.status(500).json(err));
+        },
         // Delete a user and remove thoughts
         async deleteUser(req, res) {
           try {
